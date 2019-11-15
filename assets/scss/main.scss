@@ -1,0 +1,52 @@
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/components/navbar.sass";
+@import "bulma/sass/grid/columns";
+@import "bulma/sass/base/helpers";
+
+$button-bg: #a34a28;
+$nav-bg: #f58b54;
+$nav-color: #dfddc7;
+$align-center: center;
+$size: 38px;
+$weight: 500;
+
+.navbar {
+    background: $nav-bg;
+    .navbar-brand .navbar-item {
+        font-size: 44px;
+        font-weight: 800;
+    }
+    .navbar-brand span{
+        color: $button-bg;
+    }
+}
+
+.container {
+    width: 80%;
+}
+
+.main {
+    position: relative !important;
+    top: 20% !important;
+}
+
+h1 {
+    font-size: $size !important;
+    font-weight: $weight !important;
+    text-align: $align-center;
+}
+
+h4 {
+    text-align: $align-center !important;
+    letter-spacing: 2px;
+    line-height: 10px;
+    margin-top: 4%;
+}
+
+.is-primary {
+    background: $button-bg !important;
+    text-align: $align-center;
+}
+
+@import '~bulma'
