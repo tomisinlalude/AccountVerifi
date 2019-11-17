@@ -1,79 +1,51 @@
-
 <template>
-    <main class="container verify-section">
-        <h2>Verify Account Number</h2>
-        <form>
-            <div class="field">
-                <div class="control">
-                    <input class="input input1 is-rounded is-normal" type="number" placeholder="Acount Number">
-                    <input class="input input1 is-rounded is-normal" type="number" placeholder="Bank Code">
-                    <div class="select is-rounded is-normal">
-                        <select class="select-field">
-                        <option value="">Select Bank</option>
-                        <option value="access">Access Bank</option>
-                        <option value="citibank">Citibank</option>
-                        <option value="diamond">Diamond Bank</option>
-                        <option value="ecobank">Ecobank</option>
-                        <option value="fidelity">Fidelity Bank</option>
-                        <option value="fcmb">First City Monument Bank (FCMB)</option>
-                        <option value="fsdh">FSDH Merchant Bank</option>
-                        <option value="gtb">Guarantee Trust Bank (GTB)</option>
-                        <option value="heritage">Heritage Bank</option>
-                        <option value="Keystone">Keystone Bank</option>
-                        <option value="rand">Rand Merchant Bank</option>
-                        <option value="skye">Skye Bank</option>
-                        <option value="stanbic">Stanbic IBTC Bank</option>
-                        <option value="standard">Standard Chartered Bank</option>
-                        <option value="sterling">Sterling Bank</option>
-                        <option value="suntrust">Suntrust Bank</option>
-                        <option value="union">Union Bank</option>
-                        <option value="uba">United Bank for Africa (UBA)</option>
-                        </select>
-                    </div> 
-                </div>
-            </div>
-            <div class="verify-reset">
-            <button class="button is-primary is-rounded is-small" v-on:click="verifyAccountNumber">
-                Verify
-            </button>
-            <button class="button is-primary is-rounded is-small">
-                Reset
-            </button>
-            </div>
-        </form>
-    </main>
+  <main class="container verify-section">
+    <h2>Verify Account Number</h2>
+    <Form :banks="banks" />
+  </main>
 </template>
 
 <script>
+import Form from "~/components/Form.vue";
 export default {
-    head() {
-        return {
-            title: "AccountVerifi: Verify",
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: "Most efficient way to verify your account number"
-                }
-            ]
-        };
-    },
-    methods: {
-        verifyAccountNumber: async () => {
-        const res = await fetch("https://api.paystack.co/bank/resolve?account_number=ACCOUNT_NUMBER&bank_code=BANK_CODE", {
-            method: "GET",
-            headers: {
-            "Content-Type": "application/json",
-            Authorization: "sk_test_35fbc74be953bcb9297994032efcb28e9de4977d"
-            }
-        });
-        if (!res.ok) {
-            return alert("Your account number does not exist");
+  head() {
+    return {
+      title: "AccountVerifi: Verify",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: "Most efficient way to verify your account number"
         }
-        const response = await res.json();
-        alert('Account Number Verified Successfully');
+      ]
+    };
+  },
+  components: {
+    Form
+  },
+  data() {
+    return {
+      banks: []
+    };
+  },
+  mounted() {
+    this.getBanks();
+  },
+  methods: {
+    async getBanks() {
+      const res = await fetch(`https://api.paystack.co/bank`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "sk_test_35fbc74be953bcb9297994032efcb28e9de4977d"
         }
+      });
+      if (res.ok) {
+        const { data } = await res.json();
+        return (this.banks = data);
+      }
     }
+  }
 };
 </script>
 
