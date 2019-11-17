@@ -6,6 +6,7 @@
             <div class="field">
                 <div class="control">
                     <input class="input input1 is-rounded is-normal" type="number" placeholder="Acount Number">
+                    <input class="input input1 is-rounded is-normal" type="number" placeholder="Bank Code">
                     <div class="select is-rounded is-normal">
                         <select class="select-field">
                         <option value="">Select Bank</option>
@@ -32,7 +33,7 @@
                 </div>
             </div>
             <div class="verify-reset">
-            <button class="button is-primary is-rounded is-small">
+            <button class="button is-primary is-rounded is-small" v-on:click="verifyAccountNumber">
                 Verify
             </button>
             <button class="button is-primary is-rounded is-small">
@@ -56,8 +57,24 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        verifyAccountNumber: async () => {
+        const res = await fetch("https://api.paystack.co/bank/resolve?account_number=ACCOUNT_NUMBER&bank_code=BANK_CODE", {
+            method: "GET",
+            headers: {
+            "Content-Type": "application/json",
+            Authorization: "sk_test_35fbc74be953bcb9297994032efcb28e9de4977d"
+            }
+        });
+        if (!res.ok) {
+            return alert("Your account number does not exist");
+        }
+        const response = await res.json();
+        alert('Account Number Verified Successfully');
+        }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
