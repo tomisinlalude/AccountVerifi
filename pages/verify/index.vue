@@ -1,13 +1,13 @@
 
 <template>
-    <main class="container">
+    <main class="container verify-section">
         <h2>Verify Account Number</h2>
         <form>
             <div class="field">
                 <div class="control">
-                    <input class="input is-rounded is-normal" type="number" placeholder="Acount Number">
+                    <input class="input input1 is-rounded is-normal" type="number" placeholder="Acount Number">
                     <div class="select is-rounded is-normal">
-                        <select>
+                        <select class="select-field">
                         <option value="">Select Bank</option>
                         <option value="access">Access Bank</option>
                         <option value="citibank">Citibank</option>
@@ -31,12 +31,14 @@
                     </div> 
                 </div>
             </div>
-            <button class="button is-medium">
+            <div class="verify-reset">
+            <button class="button is-primary is-rounded is-small">
                 Verify
             </button>
-            <button class="button is-medium">
+            <button class="button is-primary is-rounded is-small">
                 Reset
             </button>
+            </div>
         </form>
     </main>
 </template>

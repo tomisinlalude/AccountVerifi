@@ -13,22 +13,50 @@ $weight: 500;
 
 .navbar {
     background: $nav-bg;
+
     .navbar-brand .navbar-item {
         font-size: 44px;
         font-weight: 800;
     }
-    .navbar-brand span{
+
+    .navbar-brand span {
         color: $button-bg;
     }
 }
 
 .container {
     width: 80%;
+    box-sizing: border-box;
 }
 
-.main {
-    position: relative !important;
-    top: 20% !important;
+.main-button {
+    margin-left: 40% !important;
+}
+
+.verify-section {
+    width: 60% !important;
+    border: 1px solid #333333;
+    margin-top: 15%;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+.verify-section h2 {
+    font-size: 30px !important;
+    margin-top: 0 !important;
+}
+
+.input1 {
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.select-field {
+    width: 100% !important;
+}
+
+.verify-reset {
+    display: flex;
 }
 
 h1 {
@@ -40,13 +68,26 @@ h1 {
 h4 {
     text-align: $align-center !important;
     letter-spacing: 2px;
-    line-height: 10px;
-    margin-top: 4%;
+    line-height: 30px;
 }
 
 .is-primary {
     background: $button-bg !important;
     text-align: $align-center;
+    margin: 5% 0 3% 40%;
+}
+
+.is-small {
+    width: 150px !important;
+    font-size: 18px !important;
+    border-radius: 15px !important;
+    margin: 1% !important;
+}
+
+@media screen and (max-width: 768px) {
+    .main-button {
+        margin-left: 12% !important;
+    }
 }
 
 @import '~bulma'

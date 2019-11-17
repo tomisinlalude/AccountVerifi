@@ -4,11 +4,11 @@
         Welcome to AccountVerifi
       </h1>
       <h4>
-        The most account number verification app on the web
+        The most trusted account number verification app on the web
       </h4>
-      <button class="button is-medium is-primary is-rounded">
+      <nuxt-link to="/verify" class="button is-medium is-primary is-rounded main-button">
         Verify Account Number
-      </button>
+      </nuxt-link>
     </main>
 </template>
 
