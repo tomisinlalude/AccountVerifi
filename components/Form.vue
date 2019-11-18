@@ -46,7 +46,7 @@ export default {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "sk_test_35fbc74be953bcb9297994032efcb28e9de4977d"
+            Authorization: "Bearer sk_test_35fbc74be953bcb9297994032efcb28e9de4977d"
           }
         }
       );
